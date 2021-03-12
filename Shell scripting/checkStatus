@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-echo "Hello World!" 
 
 # Commandline argumenten:
 checkMap=$1 # Map waarin het commando wordt uitgevoerd
