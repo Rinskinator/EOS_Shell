@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+mkdir Afbeeldingen # Maakt map afbeeldingen
+
+input_path=$1 # Commandline input
+
+# Vind alle bestanden eindigend op .png en .jpg en verplaats naar Afbeeldingen
+find $input_path -name '*.png' -exec mv {} Afbeeldingen/ \;
+find $input_path -name '*.jpg' -exec mv {} Afbeeldingen/ \;

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+input_path=$1 # Commandline input
+
+# Voor elk bestand in map eindigend op .jpg, verander extensie naar .png en resize naar max 128x128.
+for picture in $input_path*.jpg; do 
+    convert "$picture" -resize 128x128\> "${picture%.*}.png"; 
+done

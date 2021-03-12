@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+input_bestand=$1 # Commandline input bestand
+
+# Vergelijk de extensie en voer het bestand vervolgens uit met het juiste commando
+case $input_bestand in 
+    *.py)
+    python3 $input_bestand
+    ;;
+    *.sh)
+    bash $input_bestand
+    ;;
+    *.cc)
+    cat $input_bestand
+    ;;
+esac

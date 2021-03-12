@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Vraag om input
+read -p "Wat is je naam?: " name
+
+# Bij geen input name = system_name (-z is lengte 0)
+if [ -z $name ] ; then
+    name=$(whoami)
+    echo $name
+else
+    echo $name
+fi
+
+# Loop herhaalt zich tot een wachtwoord succesvol is ingesteld
+while true; do
+read -p "Kies je wachtwoord: " password1
+
+    # Als input uit minder dan 8 tekens bestaat begint de loop opnieuw
+    if test ${#password1} -lt 8; then
+        echo "Het gekozen wachtwoord is te kort"
+    
+    # Bestaat het wachtwoord uit meer dan 8 tekens en is het wachtwoord gelijk wordt de loop doorbroken
+    else
+        read -p "Herhaal je wachtwoord: " password2
+        if [ $password1 = $password2 ]; then
+            echo "Het wachtwoord is succesvol ingesteld!"
+            break
+        else
+            echo "De wachtwoorden komen niet overeen"
+        fi
+    fi
+done
+
+# Aanmaken bestand en printen naam/wachtwoord (omgezet naar hash)
+echo $name >> $1
+echo $password1 | md5sum | cut -d"-" -f1 - >> $1

@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+echo "Typ 'Stop' om het programma af te sluiten" 
+
+while true; do
+    
+    # Vraag om input van de gebruiker
+    echo "Steen, Papier, Schaar?: "
+    read userInput
+
+    # Als de invoer gelijk is aan stop, break uit de while loop
+    if [ $userInput = "Stop" ] ; then
+        break
+    fi
+
+    # Computer kiest een getal tussen 1 en 3
+    computerInput=$((1 + $RANDOM % 3))
+
+    # Getal wordt omgezet in steen, papier of schaar
+    if [ $computerInput -eq 1 ] ; then
+        computerInput="Steen"
+    elif [ $computerInput -eq 2 ] ; then
+        computerInput="Papier"
+    else
+        computerInput="Schaar"
+    fi
+
+    echo "De computer koos: "
+    echo $computerInput
+
+
+    # De computer keuze wordt vergeleken met de gebruikersinput en er wordt gekeken wie wint.
+    if [ $computerInput = $userInput ] ; then
+        echo "Gelijkspel"
+    elif [ $userInput = "Steen" ] ; then
+        if [ $computerInput = "Papier" ] ; then
+            echo "Papier wint van steen, jij verliest :("
+        else
+            echo "Steen wint van schaar, jij wint!"
+        fi
+    elif [ $userInput = "Papier" ] ; then
+        if [ $computerInput = "steen" ] ; then
+            echo "Papier wint van steen, jij wint!"
+        else
+            echo "Schaar wint van papier, jij verliest :("
+        fi
+    elif [ $userInput == "Schaar" ] ; then
+        if [ $computerInput = "Papier" ] ; then
+            echo "Schaar wint van papier, jij wint!"
+        else
+            echo "Steen wint van schaar, jij verliest :(" 
+        fi
+    else
+        echo "De invoer is ongeldig"
+    fi
+done

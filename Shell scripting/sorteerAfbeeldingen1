@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Maakt map afbeeldingen
+mkdir Afbeeldingen
+
+# Input argument commandline
+input_pad=$1
+
+# Kijk per bestand in pad of het om een png/jpg bestand gaat; zo ja verplaats dan naar Afbeedlingen.
+for file in $input_pad*.{png,jpg}; do
+    mv $file Afbeeldingen
+done
+

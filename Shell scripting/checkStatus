@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+echo "Hello World!" 
+
+# Commandline argumenten:
+checkMap=$1 # Map waarin het commando wordt uitgevoerd
+commando=$2 # Te testen commando
+logfile=$3 # Bestand met resultaten
+
+# Probeer het commando uit te voeren voor elk bestand in de map
+for file in $checkMap*; do
+    $commando $file
+    if [ $? -eq 0 ]; then
+        echo "Geslaagd" > $logfile
+    else
+        echo "Mislukt" > $logfile
+    fi
+done
+
